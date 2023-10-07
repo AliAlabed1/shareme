@@ -15,7 +15,7 @@ const Home = () => {
   const userinfo=fetchUser();
   useEffect(()=>{
    
-    const query= userQuery(userinfo?.aud);
+    const query= userQuery(userinfo?.email.split('@')[0]);
     client.fetch(query)
       .then((data)=>setuser(data[0]));
       

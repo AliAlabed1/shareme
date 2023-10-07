@@ -1,7 +1,7 @@
 import React from 'react'
 import jwt_decode from 'jwt-decode'
 import {GoogleOAuthProvider} from '@react-oauth/google'
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin} from '@react-oauth/google';
 import shareVideo from '../assets/share.mp4'
 import logo from '../assets/logowhite.png'
 import {FcGoogle} from 'react-icons/fc'
@@ -13,9 +13,9 @@ const Login = () => {
     
     const decod=jwt_decode(response.credential)
     localStorage.setItem('user',JSON.stringify(decod))
-    const {name,aud,picture}=decod
+    const {name,email,picture}=decod
     const doc={
-      _id:aud,
+      _id:email.split('@')[0],
       _type:'user',
       userName:name,
       image:picture
@@ -37,7 +37,7 @@ const Login = () => {
          controls={false}
          muted
          autoPlay
-         className='w-fuul h-full object-cover'
+         className='w-full h-full object-cover'
         />
         <div className='absolute flex flex-col justify-center items-center top-0 left-0 right-0 bottom-0 bg-blackOverlay'>
           <div className='p-5'>

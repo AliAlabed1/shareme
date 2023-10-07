@@ -3,15 +3,10 @@ import { NavLink,Link } from 'react-router-dom'
 import {RiHomeFill} from 'react-icons/ri'
 import {IoIosArrowForward} from 'react-icons/io'
 import logo from '../assets/logo.png'
-
+import { categories } from '../utils/data'
 const isNonActiveStyles='flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all ease-in-out capitalize'
 const isActiveStyles='flex items-center px-5 gap-3 font-extrabold border-black border-r-2 transition-all ease-in-out capitalize'
-const categories=[
-  {name:'animals'},
-  {name:'walpapers'},
-  {name:'Gameing'},
-  {name:'art'}
-]
+
 const Sidebar = ({user,closeToggel}) => {
   const handleCloseSidebar=()=>{
     if(closeToggel) closeToggel(false);
@@ -41,6 +36,7 @@ const Sidebar = ({user,closeToggel}) => {
                       onClick={handleCloseSidebar}
                       key={item.name}
                     >
+                      <img src={item.image} alt="category-img" className='w-8 h-8 rounded-full shadow-sm' />
                       {item.name}
                     </NavLink>
                   )
